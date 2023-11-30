@@ -11,3 +11,4 @@ function fibonacci(n) {
 // Generar los primeros 10 números de Fibonacci
 const fibonacciNumbers = fibonacci(10);
 console.log(fibonacciNumbers);
+console.log(1===1)
