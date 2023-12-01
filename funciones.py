@@ -6,7 +6,8 @@ def fibonacci(n):
 
     return fib_array
 
-def floyd_warshall(graph):
+
+    def floyd_warshall_jorge(graph):
     """
     Encuentra todos los caminos más cortos entre cada par de nodos en un grafo ponderado.
 
@@ -15,19 +16,24 @@ def floyd_warshall(graph):
     :return: Una matriz de distancias mínimas entre cada par de nodos.
     """
     num_nodos = len(graph)
-    
-    # Inicializar la matriz de distancias mínimas
-    distancias = [row[:] for row in graph]
 
-    # Iterar sobre cada nodo intermedio k
+    # Inicializar la matriz de distancias mínimas
+    distancias = [[float('inf') if i != j else 0 for j in range(num_nodos)] for i in range(num_nodos)]
+
+    # Actualizar la matriz de distancias con los valores iniciales del grafo
+    for i in range(num_nodos):
+        for j in range(num_nodos):
+            if graph[i][j] != float('inf'):
+                distancias[i][j] = graph[i][j]
+
+    # Algoritmo de Floyd-Warshall
     for k in range(num_nodos):
-        # Iterar sobre cada par de nodos i, j
         for i in range(num_nodos):
             for j in range(num_nodos):
-                # Actualizar la distancia mínima si encontramos un camino más corto a través de k
                 distancias[i][j] = min(distancias[i][j], distancias[i][k] + distancias[k][j])
 
     return distancias
+
 
 # Ejemplo de uso:
 # Supongamos un grafo con 4 nodos, donde la ausencia de arista se representa con float('inf')
