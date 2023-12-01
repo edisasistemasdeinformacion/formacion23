@@ -1,1 +1,7 @@
-prueba
+# Archivos de log
+log_1
+log_2
+
+# Carpeta node_modules
+node_modules/
+
